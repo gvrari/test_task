@@ -1,0 +1,54 @@
+.main_component{
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-top: 18rem;
+}
+
+.form_component{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+}
+
+.form_component-str{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.input{
+  display: flex;
+  justify-content: center;
+  padding-left: 2rem;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: solid 2px gray;
+  margin-bottom: 1rem;
+}
+
+.btn-block{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.btn{
+  height: 3rem;
+  width: 6rem;
+  border: none;
+  background-color: aliceblue;
+  color: gray;
+}
+
+.btn-inactive{
+  background-color: red;
+}
+
+.first_step-btn-block{
+  display: flex;
+  justify-content: end;
+}
