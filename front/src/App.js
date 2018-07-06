@@ -4,6 +4,7 @@ import SecondStep from './components/SecondStep'
 import ThirdStep from './components/ThirdStep'
 import FourthStep from './components/FourthStep'
 
+import Logo from './assets/pictures/Logo.svg'
 import './App.css'
 
 
@@ -80,6 +81,7 @@ export default class App extends Component {
     render() {
         return (
             <div className='main_div'>
+                <span className='logo'><img className='logo-picture' src={Logo}/></span>
                 <div className='main_component'>
                     {this.showStep()}
                 </div>

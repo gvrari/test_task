@@ -1,8 +1,31 @@
+@font-face {
+  font-family: 'Roboto-Bold';
+  src: url("./assets/fonts/Roboto-Bold.ttf");
+}
+
+@font-face {
+  font-family: 'Roboto-Light';
+  src: url("./assets/fonts/Roboto-Light.ttf");
+}
+
+.main_div{
+  font-family: Roboto-Light;
+}
+
+.logo{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.logo-picture{
+  margin: 1rem;
+}
+
 .main_component{
   display: flex;
   align-content: center;
   justify-content: center;
-  margin-top: 18rem;
+  margin-top: 17rem;
 }
 
 .form_component{
@@ -12,43 +35,79 @@
   justify-content: center;
 }
 
+.caption{
+  font-family: Roboto-Bold;
+  font-size: 21px;
+}
+
 .form_component-str{
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  width: 21rem;
 }
 
 .input{
   display: flex;
   justify-content: center;
-  padding-left: 2rem;
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: solid 2px gray;
+  border-bottom: solid 1px gray;
   margin-bottom: 1rem;
+  font-family: Roboto-Light;
+  font-size: 17px;
+  height: 2rem;
+  width: 100%;
+  outline: none;
+  margin-top: 1rem;
+}
+
+.input:focus{
+  border-bottom: solid 2px dodgerblue;
 }
 
 .btn-block{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .btn{
-  height: 3rem;
+  height: 2.4rem;
   width: 6rem;
   border: none;
-  background-color: aliceblue;
-  color: gray;
+  background-color: gray;
+  color: #333232;
+  cursor: pointer;
+  font-family: Roboto-Bold;
+  border-radius: 2px;
+  outline: none;
+}
+
+.btn:hover{
+  background-color: #757272;
 }
 
 .btn-inactive{
-  background-color: red;
+  background-color: whitesmoke;
+  cursor: default;
+}
+
+.btn-inactive:hover{
+  background-color: whitesmoke;
 }
 
 .first_step-btn-block{
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.error_message{
+  color: red;
+  font-size: 13px;
+  height: 1rem;
 }
