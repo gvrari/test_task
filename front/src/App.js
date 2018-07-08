@@ -18,8 +18,65 @@ export default class App extends Component {
             phone: '',
             password:'',
             code:'',
-            typedCode:''
+            typedCode:'',
+            emailError: false,
+
+            data: {
+
+            }
         };
+    }
+
+    createUserInfo(data) {
+       data ={
+           email: this.state.email,
+           password: this.state.password,
+           phone: this.state.phone
+        }
+        fetch('http://localhost:3001/user', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(data)
+        })
+    }
+
+    createUserCode = (phone) => {
+        phone = {phone: this.state.phone};
+
+        fetch('http://localhost:3001/code', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(phone)
+        }).then((response) => {
+            alert(response.json().code)
+        })
+    }
+
+    emailChecking = (email) => {
+        email = {email: this.state.email};
+
+        fetch('http://localhost:3001/email', {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify(email)
+        }).then((response) => {
+            if (response.body) {
+                this.setState({
+                    emailError: this.state.emailError = false
+                });
+                this.nextStep()
+            } else {
+                this.setState({
+                    emailError: this.state.emailError = true
+                })
+            }
+        })
     }
 
     generateCod = () => {
@@ -52,6 +109,8 @@ export default class App extends Component {
                 return <FirstStep email={this.state.email}
                                   setField={this.setField}
                                   step={this.state.step}
+                                  emailChecking ={this.emailChecking}
+                                  emailError={this.state.emailError}
                                   nextStep={this.nextStep}/>
             case 2:
                 return <SecondStep password={this.state.password}
@@ -71,7 +130,8 @@ export default class App extends Component {
                                    previousStep={this.previousStep}
                                    setField={this.setField}
                                    typedCode={this.state.typedCode}
-                                   generateCod={this.generateCod}/>
+                                   createUserCode={this.createUserCode}
+                                   createUserInfo={this.createUserInfo}/>
         }
     }
 

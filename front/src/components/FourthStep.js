@@ -25,10 +25,10 @@ export default class FourthStep extends Component {
                     <span className="error_message" ></span>
             }
             <div className='btn-block'>
-            <button className="btn " onClick={this.props.generateCod}>Get the Code</button>
+            <button className="btn " onClick={this.props.createUserCode}>Get the Code</button>
                 {
                     (this.props.typedCode === this.props.code && this.props.typedCode !=='') ?
-                        <button className="btn " >DONE</button> :
+                        <button className="btn " onClick={this.props.createUserInfo}>DONE</button> :
                         <button className="btn btn-inactive" >DONE</button>
                 }
             </div>
