@@ -20,26 +20,23 @@ export default class App extends Component {
             code:'',
             typedCode:'',
             emailError: false,
-
-            data: {
-
-            }
         };
     }
 
-    createUserInfo(data) {
-       data ={
+    createUserInfo = (data) => {
+       this.state.data ={
            email: this.state.email,
            password: this.state.password,
            phone: this.state.phone
-        }
+        };
+        data = {data: this.state.data}
         fetch('http://localhost:3001/user', {
             headers: {
                 'Content-Type': 'application/json'
             },
             method: 'POST',
             body: JSON.stringify(data)
-        })
+        }).then(res => alert('Done'))
     }
 
     createUserCode = (phone) => {
@@ -51,9 +48,11 @@ export default class App extends Component {
             },
             method: 'POST',
             body: JSON.stringify(phone)
-        }).then((response) => {
-            alert(response.json().code)
-        })
+        }).then(res => res.json())
+            .then(res => {
+                this.setState({code: res.code});
+                alert(res.code)
+            })
     }
 
     emailChecking = (email) => {
@@ -65,18 +64,18 @@ export default class App extends Component {
             },
             method: 'POST',
             body: JSON.stringify(email)
-        }).then((response) => {
-            if (response.body) {
-                this.setState({
-                    emailError: this.state.emailError = false
-                });
-                this.nextStep()
-            } else {
-                this.setState({
-                    emailError: this.state.emailError = true
-                })
-            }
-        })
+        }).then(res => res.json())
+            .then(res => {if (res.result  === true) {
+            this.setState({
+                emailError:  false
+            });
+            this.nextStep()
+        } else {
+            this.setState({
+                emailError:  true
+            })
+        }})
+
     }
 
     generateCod = () => {

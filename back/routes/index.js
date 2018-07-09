@@ -41,14 +41,19 @@ router.options('/email', function (req, res, next) {
 });
 
 router.post('/email', function (req, res, next) {
-    let emailBody = false;
-    if (checkEmail(req.body.email)) {
-        emailBody = true;
-    } else {
-        emailBody = false;
-    };
+    let emailBody = (checkEmail(req.body.email));
     makeResponse(res);
     res.json({result: emailBody});
+});
+
+router.options('/user', function (req, res, next) {
+    makeResponse(res);
+    res.send('');
+});
+
+router.post('/user', function (req, res, next) {
+    makeResponse(res);
+    res.send('');
 });
 
 module.exports = router;
